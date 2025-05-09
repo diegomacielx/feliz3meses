@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz 3 meses, minha princesa</title>
+  <title>Feliz 3 Meses, Meu Amor</title>
   <style>
     body {
       margin: 0;
-      background: #fff0f5;
       font-family: 'Arial', sans-serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+                  url('https://drive.google.com/uc?export=view&id=1KH2NTQse3R2MJjnfTspIMjXYjV4vh2qH ') center center/cover no-repeat fixed;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,6 +24,13 @@
     .hearts {
       font-size: 30px;
       margin-bottom: 10px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     .envelope {
@@ -120,7 +128,8 @@
   </div>
 
   <!-- Música do Paul Anka -->
-  <audio <iframe src="https://drive.google.com/file/d/1ocwqWNd0iu99gH2D7lSHukTsCBVY7rZu/preview" width="640" height="480" allow="autoplay"></iframe>
+  <audio id="musicPlayer" src="https://drive.google.com/uc?export=download&id=1ocwqWNd0iu99gH2D7lSHukTsCBVY7rZu " preload="auto"></audio>
+
   <script>
     const envelope = document.getElementById('envelope-click');
     const letter = document.getElementById('letter');
