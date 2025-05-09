@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Feliz 3 Meses, Meu Amor</title>
+  <title>Feliz 3 meses, minha princesa</title>
   <style>
     body {
       margin: 0;
@@ -119,23 +119,22 @@
     </div>
   </div>
 
-  <!-- Iframe da música do YouTube -->
-  <iframe id="musicPlayer" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <!-- Música do Paul Anka -->
+  <audio id="musicPlayer" src="https://drive.google.com/uc?export=download&id=1ocwqWNd0iu99gH2D7lSHukTsCBVY7rZu " preload="auto"></audio>
 
   <script>
     const envelope = document.getElementById('envelope-click');
     const letter = document.getElementById('letter');
     const musicPlayer = document.getElementById('musicPlayer');
 
-    // URL do vídeo do YouTube com autoplay
-    const youtubeUrl = "https://www.youtube.com/embed/RFLyozPOeVQ?autoplay=1&loop=1&playlist=RFLyozPOeVQ ";
-
     envelope.addEventListener('click', () => {
       letter.classList.add('open');
 
-      // Só inicia a música depois do clique (para evitar bloqueio)
-      if (!musicPlayer.src) {
-        musicPlayer.src = youtubeUrl;
+      // Toca a música quando a carta é aberta
+      if (musicPlayer.paused) {
+        musicPlayer.play().catch(err => {
+          console.log("Erro ao tocar música:", err);
+        });
       }
     });
   </script>
