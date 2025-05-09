@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Feliz 3 Meses, Meu Amor</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fff0f5;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .envelope-container {
+      position: relative;
+      text-align: center;
+    }
+
+    .hearts {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .envelope {
+      width: 300px;
+      height: 200px;
+      background-color: #d8bfd8;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+      background: linear-gradient(to right, #ff6ec4, #7873f5);
+      transition: transform 0.3s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .letter {
+      position: absolute;
+      top: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 280px;
+      height: 0;
+      overflow: hidden;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      opacity: 0;
+      transition: all 1s ease;
+      z-index: 10;
+      background-color: #fffbe9;
+    }
+
+    .letter.open {
+      height: 300px;
+      opacity: 1;
+    }
+
+    .letter-content {
+      max-height: 280px;
+      overflow-y: auto;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      padding-right: 5px;
+    }
+
+    /* Estilo opcional para a barra de rolagem */
+    .letter-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .letter-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+
+    .letter-content::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="envelope-container" id="envelope">
+    <div class="hearts">
+      <span>❤</span><span>❤</span><span>❤</span>
+    </div>
+    <div class="envelope" id="envelope-click">
+      Feliz 3 meses, meu amor
+    </div>
+    <div class="letter" id="letter">
+      <div class="letter-content" id="letterContent">
+        <p>Meu amor,</p>
+
+        <p>Hoje eu não poderia deixar de expressar o quanto meu coração está transbordando de felicidade e gratidão. Receber a sua mensagem em comemoração aos nossos três meses de relacionamento foi como sentir mais uma vez o imenso amor que nos une. Cada palavra sua é um lembrete de como sou abençoado por ter você ao meu lado.</p>
+
+        <p>Você é muito mais do que apenas a mulher da minha vida. Você é minha inspiração diária, minha fonte de força e o motivo pelo qual eu continuo lutando, tentando mais e buscando sempre conquistar novos horizontes. Tudo o que faço, tudo o que sonho, carrega um pedaço de nós dois, porque é ao seu lado que eu quero estar, em cada vitória e em cada aprendizado.</p>
+
+        <p>Meu coração se enche de alegria ao saber que estamos construindo juntos uma história tão linda, cheia de carinho, cumplicidade e amor. Obrigado por ser essa mulher incrível que ilumina meus dias, que me apoia em cada passo e que faz a vida ter um sentido muito mais profundo.</p>
+
+        <p>Eu te amo mais do que palavras podem dizer e sou imensamente grato por ter você comigo.</p>
+
+        <p>Com todo o meu amor,<br>Diego.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Iframe da música do YouTube -->
+  <iframe id="musicPlayer" width="0" height="0" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+  <script>
+    const envelope = document.getElementById('envelope-click');
+    const letter = document.getElementById('letter');
+    const musicPlayer = document.getElementById('musicPlayer');
+
+    // URL do vídeo do YouTube com autoplay
+    const youtubeUrl = "https://www.youtube.com/embed/RFLyozPOeVQ?autoplay=1&loop=1&playlist=RFLyozPOeVQ ";
+
+    envelope.addEventListener('click', () => {
+      letter.classList.add('open');
+
+      // Só inicia a música depois do clique (para evitar bloqueio)
+      if (!musicPlayer.src) {
+        musicPlayer.src = youtubeUrl;
+      }
+    });
+  </script>
+</body>
+</html>
