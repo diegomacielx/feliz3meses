@@ -99,9 +99,54 @@
       background: #ccc;
       border-radius: 4px;
     }
+
+    /* Botão Fechar Carta */
+    .close-button {
+      display: none;
+      margin-top: 10px;
+      padding: 5px 15px;
+      background-color: #ff6ec4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .close-button:hover {
+      background-color: #e05cb0;
+    }
+
+    /* Efeito de partículas (confetes/pétalas) */
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: red;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    .particle.heart {
+      background: pink;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      background: radial-gradient(circle, #ff0055 40%, #cc0044 100%);
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-20px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Elemento onde os "confetes" vão ser criados -->
+  <div id="particles"></div>
 
   <div class="envelope-container" id="envelope">
     <div class="hearts">
@@ -124,6 +169,8 @@
 
         <p>Com todo o meu amor,<br>Diego.</p>
       </div>
+      <!-- Botão fechar -->
+      <button class="close-button" id="closeLetter">Fechar carta</button>
     </div>
   </div>
 
@@ -134,16 +181,41 @@
     const envelope = document.getElementById('envelope-click');
     const letter = document.getElementById('letter');
     const musicPlayer = document.getElementById('musicPlayer');
+    const closeBtn = document.getElementById('closeLetter');
+
+    // Função para criar partículas (petálas ou corações)
+    function createParticle() {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      if (Math.random() > 0.5) particle.classList.add('heart');
+      particle.style.left = Math.random() * window.innerWidth + 'px';
+      particle.style.animationDuration = (5 + Math.random() * 5) + 's';
+      particle.style.opacity = Math.random();
+      document.body.appendChild(particle);
+
+      setTimeout(() => {
+        particle.remove();
+      }, 7000);
+    }
+
+    // Cria partículas a cada segundo
+    setInterval(createParticle, 300);
 
     envelope.addEventListener('click', () => {
       letter.classList.add('open');
+      closeBtn.style.display = 'inline-block';
 
-      // Toca a música quando a carta é aberta
+      // Toca a música ao abrir a carta
       if (musicPlayer.paused) {
         musicPlayer.play().catch(err => {
           console.log("Erro ao tocar música:", err);
         });
       }
+    });
+
+    closeBtn.addEventListener('click', () => {
+      letter.classList.remove('open');
+      closeBtn.style.display = 'none';
     });
   </script>
 </body>
